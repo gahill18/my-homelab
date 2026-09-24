@@ -1,5 +1,9 @@
 # My Homelab
 
+## Storage
+
+### FreeNAS - TODO
+
 ## Applications 
 
 ### Jellyfin
@@ -17,6 +21,10 @@ From within ~/Homelab/pi-hole
 ``` sudo socker compose up ```
 
 ### Minecraft Server - TODO
+
+From within ~/Homelab/minecraft-server
+
+``` sudo socker compose up ```
 
 ## Networking
 

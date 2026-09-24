@@ -1,0 +1,61 @@
+# docker-compose.yml - Minecraft Java Edition server
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    container_name: minecraft-server
+    stdin_open: true
+    tty: true
+    ports:
+      # Default Minecraft port
+      - "25565:25565"
+    environment:
+      # Accept the Minecraft EULA (required)
+      EULA: "TRUE"
+
+      # Server type: VANILLA, FORGE, FABRIC, PAPER, SPIGOT, BUKKIT
+      TYPE: "VANILLA"
+
+      # Minecraft version - use LATEST for the newest release
+      VERSION: "LATEST"
+
+      # Memory allocation for the JVM
+      MEMORY: "2G"
+
+      # Explicit RCON password used by rcon-cli and backup containers
+      RCON_PASSWORD: "minecraft"
+
+      # Server configuration
+      SERVER_NAME: "G&G"
+      MOTD: "Now Self Hosted!"
+      MAX_PLAYERS: 5
+      DIFFICULTY: "hard"
+      MODE: "survival"
+      VIEW_DISTANCE: 10
+      SPAWN_PROTECTION: 0
+
+      # World settings
+      LEVEL_TYPE: "minecraft:normal"
+      SEED: ""
+      GENERATE_STRUCTURES: "true"
+
+      # Whitelist and ops
+      ENABLE_WHITELIST: "false"
+      # OPS: "WaluweenieHutJr"
+
+      # Performance settings
+      MAX_TICK_TIME: 60000
+      ENABLE_COMMAND_BLOCK: "true"
+
+    volumes:
+      # Persist all server data including worlds
+      - mc-data:/data
+    restart: unless-stopped
+
+    # Resource limits prevent the server from consuming all host resources
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+
+volumes:
+  mc-data:
