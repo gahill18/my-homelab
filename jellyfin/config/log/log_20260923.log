@@ -1,0 +1,7 @@
+[2026-09-23 21:58:19.089 +00:00] [INF] [22] Jellyfin.LiveTv.Guide.GuideManager: Refreshing guide with 7 days of guide data
+[2026-09-23 21:58:19.120 +00:00] [INF] [22] Emby.Server.Implementations.ScheduledTasks.TaskManager: "Refresh Guide" Completed after 0 minute(s) and 3 seconds
+[2026-09-23 22:16:16.987 +00:00] [INF] [51] Emby.Server.Implementations.Session.SessionManager: Sending shutdown notifications
+[2026-09-23 22:16:17.008 +00:00] [INF] [37] Main: Optimizing the database... This might take a while
+[2026-09-23 22:16:17.058 +00:00] [INF] [37] Jellyfin.Database.Providers.Sqlite.SqliteDatabaseProvider: jellyfin.db optimized successfully!
+[2026-09-23 22:16:17.096 +00:00] [INF] [37] Emby.Server.Implementations.ApplicationHost: Disposing "CoreAppHost"
+[2026-09-23 22:16:17.096 +00:00] [INF] [37] Emby.Server.Implementations.ApplicationHost: Disposing "Plugin"
