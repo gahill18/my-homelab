@@ -8,36 +8,48 @@
 
 ### Jellyfin
 
-From within ~/Homelab/jellyfin/
+To run:
 
-``` sudo docker compose up ```
+``` cd jellyfin && sudo docker compose up ```
 
-Open browser and go to 127.0.0.1:8096
+To access:
+
+* From local device: Open browser and go to 127.0.0.1:8096
+
+* From separate device: TODO
 
 ### Pi-Hole
 
-From within ~/Homelab/pi-hole
+To run:
 
-``` sudo socker compose up ```
+``` cd pi-hole && sudo socker compose up ```
 
-### Minecraft Server - TODO
+### Minecraft Server
 
-From within ~/Homelab/minecraft-server
+To run:
 
-``` sudo socker compose up ```
+``` cd minecraft-server && sudo socker compose up ```
+
+To access: TODO
 
 ## Networking
 
 ### Tailscale
 
-1. Run the Tailscale client
+To install:
+
+``` curl -fsSL https://tailscale.com/install.sh | sh ```
+
+To run:
 
 ``` sudo tailscale up ```
 
-2. From another device, connect to the Tailscale webclient
+To connect:
 
-3. Log in
+1. From another device, connect to the Tailscale webclient
 
-4. Navigate to "Machines"
+2. Log in
 
-5. Under "Fedora", select "SSH"
+3. Navigate to "Machines"
+
+4. Under "Fedora", select "SSH"
