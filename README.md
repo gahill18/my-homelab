@@ -4,6 +4,10 @@
 
 ### FreeNAS - TODO
 
+### Proton Drive - TODO
+
+Managed using cronjobs in ``` ~/Homelab/protondrive/proton-drive.sh ```
+
 ## Applications 
 
 ### Jellyfin
@@ -30,7 +34,11 @@ To run:
 
 ``` cd minecraft-server && sudo socker compose up ```
 
-To access: TODO
+To access:
+
+1. Open Minecraft client on device connected to Tailscale VPN
+
+2. Multiplayer > Direct Connection or Add Server > [SERVER IP]:25565
 
 ## Networking
 

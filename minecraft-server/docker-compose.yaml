@@ -40,7 +40,7 @@ services:
 
       # Whitelist and ops
       ENABLE_WHITELIST: "false"
-      # OPS: "WaluweenieHutJr"
+      # OPS: "WaluigieHutJr"
 
       # Performance settings
       MAX_TICK_TIME: 60000
