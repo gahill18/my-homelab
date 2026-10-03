@@ -6,7 +6,7 @@
 
 ### Proton Drive - TODO
 
-Managed using cronjobs in ``` ~/Homelab/protondrive/proton-drive.sh ```
+Managed using cronjobs in ``` protondrive/proton-drive.sh ```
 
 ## Applications 
 
