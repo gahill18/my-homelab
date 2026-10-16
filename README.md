@@ -1,10 +1,24 @@
 # My Homelab
 
+## Virtualization - TODO
+
+Mostly docker containers
+
+### Credential Stores - TODO
+
+https://docs.docker.com/reference/cli/docker/login/#credential-stores
+
+### Python Development Environment - TODO
+
 ## Storage
 
 ### FreeNAS - TODO
 
 ### Proton Drive - TODO
+
+CLI installed for linux here
+
+``` wget https://proton.me/download/drive/cli/0.8.0/linux-x64/proton-drive ```
 
 Managed using cronjobs in ``` protondrive/proton-drive.sh ```
 
