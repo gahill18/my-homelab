@@ -52,7 +52,6 @@ def main():
     
     remainingGuesses, wordLength, wordPoolSize = getConfigFromUser()
     
-    # TODO - pull from wordList
     randomWords = random.sample([w for w in wordList if len(w) == wordLength], wordPoolSize)
     answer = random.choice(randomWords)
     assert answer in randomWords
@@ -60,6 +59,12 @@ def main():
     
     gameState = game.Game(remainingGuesses, wordLength, randomWords, answer)
     didPlayerWin = gameState.run()
-    exit(0) if didPlayerWin else exit(1)
+
+    playAgain = input('Play again?\n[Y]es\t[N]o\n')
+    if playAgain != 'Y':
+        # TODO - Loop
+        exit(0)
+    else:
+        exit(1)
     
 main()
