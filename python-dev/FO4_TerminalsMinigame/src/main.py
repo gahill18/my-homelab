@@ -1,6 +1,7 @@
 #!/bin/python3
 
 from game import Game
+from solver import Solver
 import words
 
 # Determine how many parenthesis/bracket/brace pairs are in a string
@@ -48,11 +49,18 @@ def mainMenu() -> None:
     wordList = words.pullWordListFromURL() 
     button: str = ''
     while button != 'Q':
-        button: str = input('\n[N]ew Game\n[Q]uit\n')
+        button: str = input('\n[N]ew Game\n[S]olve Random\n[Q]uit\n')
         if button == 'N':
             # remainingGuesses, wordLength, wordPoolSize = getConfigFromUser()
             gameState = Game.randomGameFromWordList(wordList)
             didPlayerWin = gameState.run()
+        elif button == 'S':
+            gameState = Game.randomGameFromWordList(wordList)
+            solver = Solver(gameState)
+            attemptResults = solver.solve()
+            print(attemptResults)
+
+    print('Thanks for playing!')
     exit(1)
 
 mainMenu()

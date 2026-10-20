@@ -32,23 +32,23 @@ class Game:
         
         return gameState
         
-    def submitGuess(self, guess: Word) -> bool:
+    def submitGuess(self, guess: Word) -> None:
         print(f'You guessed \'{guess}\'')
-        # Player wins the game
-        if guess == self.answer:
-            print('You win!')
-            return True
-        
         # Filter list of remaining possible answers
-        else:
-            self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
-            self.remainingGuesses -= 1
-            return False
+        self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
+        self.remainingGuesses -= 1
 
     def hasPlayerLost(self) -> bool:
         return self.remainingGuesses == 0
 
+    def hasPlayerWon(self) -> bool:
+        return len(self.remainingWords) <= 1
+
+    def isGameOver(self) -> bool:
+        return self.hasPlayerLost() or self.hasPlayerWon()
+
     def gameOver(self) -> None:
+        print('You win!' if len(self.remainingWords) == 0 or self.remainingGuesses > 0 else 'You lose!')
         _ = input('Press enter to return to the main menu')
         return
 
@@ -78,16 +78,12 @@ class Game:
 # Run the game and return a bool indicating whether the player won or not
     def run(self) -> bool:
         # Let the player guess until they run out of guesses
-        playerWins = False
         while not self.hasPlayerLost():
             # TODO - auto sizing?
             self.printTerminalScreen()
             self.printGameState()
             guess = input(f'\nGuess a word\n')
-            playerWins = self.submitGuess(guess)
-            if playerWins:
-                print('You win!')
+            if self.submitGuess(guess):
                 return self.gameOver()
         
-        print('You lose!')
         return self.gameOver()
