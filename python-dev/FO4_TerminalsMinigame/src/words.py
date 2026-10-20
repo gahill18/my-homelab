@@ -1,5 +1,10 @@
 import requests
 
+class Word:
+    def __init__(text: str):
+        self.text = text
+
+    
 # Takes a URL pointing to a remotely available plaintext list of words separated by commas or newlines
 # and returns it as a list of strings
 def pullWordListFromURL(src: str = 'https://www.mit.edu/~ecprice/wordlist.10000') -> List[str]:

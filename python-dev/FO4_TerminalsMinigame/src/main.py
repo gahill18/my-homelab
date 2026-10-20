@@ -1,10 +1,7 @@
 #!/bin/python3
 
-import random
-import game
+from game import Game
 import words
-
-
 
 # Determine how many parenthesis/bracket/brace pairs are in a string
 def numOpenClosePairs(line: str) -> int:
@@ -46,25 +43,16 @@ def getConfigFromUser() -> List[int]:
     print(f'---- End ----\n')
     return [remainingGuesses,wordLength,wordPoolSize]
 
-def main():
+def mainMenu() -> None:
     # # TODO - other word sources
     wordList = words.pullWordListFromURL() 
-    
-    remainingGuesses, wordLength, wordPoolSize = getConfigFromUser()
-    
-    randomWords = random.sample([w for w in wordList if len(w) == wordLength], wordPoolSize)
-    answer = random.choice(randomWords)
-    assert answer in randomWords
-    assert all([len(w) == wordLength for w in randomWords]), f'All words must be of length {wordLength}'
-    
-    gameState = game.Game(remainingGuesses, wordLength, randomWords, answer)
-    didPlayerWin = gameState.run()
+    button: str = ''
+    while button != 'Q':
+        button: str = input('\n[N]ew Game\n[Q]uit\n')
+        if button == 'N':
+            # remainingGuesses, wordLength, wordPoolSize = getConfigFromUser()
+            gameState = Game.randomGameFromWordList(wordList)
+            didPlayerWin = gameState.run()
+    exit(1)
 
-    playAgain = input('Play again?\n[Y]es\t[N]o\n')
-    if playAgain != 'Y':
-        # TODO - Loop
-        exit(0)
-    else:
-        exit(1)
-    
-main()
+mainMenu()
