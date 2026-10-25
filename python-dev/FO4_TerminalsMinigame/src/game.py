@@ -13,6 +13,7 @@ class Game:
 
         self.remainingWords = set(copy.deepcopy(wordList))
 
+    # Randomly generate a default-config game based off of an arbitrary word list
     def randomGameFromWordList(wordList: List[Word]) -> Game:
         remainingGuesses = 4
         wordLength = 4
@@ -31,27 +32,33 @@ class Game:
         )
         
         return gameState
-        
+
+    # Activities to run based on what the player guesses
     def submitGuess(self, guess: Word) -> None:
         print(f'You guessed \'{guess}\'')
         # Filter list of remaining possible answers
         self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
         self.remainingGuesses -= 1
 
+    # Has the player loss
     def hasPlayerLost(self) -> bool:
         return self.remainingGuesses == 0
 
+    # Has the player won?
     def hasPlayerWon(self) -> bool:
         return len(self.remainingWords) <= 1
 
+    # Is the game over, *for any reason*?
     def isGameOver(self) -> bool:
         return self.hasPlayerLost() or self.hasPlayerWon()
 
+    # Activities to run when the game ends
     def gameOver(self) -> None:
         print('You win!' if len(self.remainingWords) == 0 or self.remainingGuesses > 0 else 'You lose!')
         _ = input('Press enter to return to the main menu')
         return
 
+    # "Render" relevant details to the player on screen
     def printGameState(self) -> None:
         print(f'Remaining guesses: {self.remainingGuesses}')
         print(f'Remaining possible words: {len(self.remainingWords)}')

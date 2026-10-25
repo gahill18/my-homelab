@@ -1,4 +1,5 @@
 import requests
+from collections import Counter
 
 class Word:
     def __init__(text: str):
@@ -26,6 +27,15 @@ def countMatchingChars(s1: str, s2: str) -> int:
         if s1[i] == s2[i]:
             matches += 1
     return matches
+
+# Get the frequencies of every character in every position for a list of words
+def charIndexFrequencies(wordList: List[Word]) -> List[Tuple[Tuple[str,int],int]]:
+    allCharPositions: List[Tuple[str, int]] = []
+    for w in wordList:
+        wCharPositions: List[Tuple[str, int]] = [(c,i) for i,c in enumerate(w)]
+        allCharPositions += wCharPositions
+    freqs = Counter(allCharPositions)
+    return freqs.most_common()
 
 # Takes a guess, the correct answer, and a list of remaining words, and returns the list of remaining words after narrowing based on the number of matching chars
 def narrowRemainingWords(guess: str, answer: str, remainingWords: Set[str]) -> Set[str]:

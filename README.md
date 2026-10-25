@@ -1,3 +1,11 @@
+
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: home
+---
+
 # My Homelab
 
 ## Virtualization - TODO
@@ -21,6 +29,10 @@ CLI installed for linux here
 ``` wget https://proton.me/download/drive/cli/0.8.0/linux-x64/proton-drive ```
 
 Managed using cronjobs in ``` protondrive/proton-drive.sh ```
+
+### Weekly Github Backups[?] - TODO
+
+TODO - Set up weekly cron job to commit changes in this directory and push to a dedicated branch on Github
 
 ## Applications 
 
