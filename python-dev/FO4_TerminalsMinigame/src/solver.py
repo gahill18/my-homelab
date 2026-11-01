@@ -43,10 +43,12 @@ class Solver:
         print(f'cif: {cif}')
         numRemaining = len(self.currentGameState.remainingWords)
         halved = numRemaining // 2
-        bisect = min([(abs(freq-halved), char) for ((char,ind),freq) in cif])
+        # Find the character and index that comes closest to cuting the list in half
+        bisect = min([(abs(freq-halved), char, ind) for ((char,ind),freq) in cif])
+        freq,char,ind = bisect
         print(f'bisect: {bisect}')
-
+        matchingWords = [w for w in self.currentGameState.remainingWords if w[ind] == char]
+        print(f'Matching words: {matchingWords}')
         
-        
-        word = random.choice(self.currentGameState.wordList)
+        word = random.choice(matchingWords)
         return word       
