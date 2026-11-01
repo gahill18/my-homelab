@@ -38,7 +38,9 @@ class Game:
     def submitGuess(self, guess: Word) -> bool:
         print(f'You guessed \'{guess}\'')
         # Filter list of remaining possible answers
-        self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
+        matches, self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
+        print(f'{matches} letters correct\n')
+
         self.remainingGuesses -= 1
         return guess == self.answer
 

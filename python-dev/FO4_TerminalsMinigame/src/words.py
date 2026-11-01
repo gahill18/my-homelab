@@ -13,11 +13,6 @@ def pullWordListFromURL(src: str = 'https://www.mit.edu/~ecprice/wordlist.10000'
 
         rawText = r.text
         wordList = rawText.split()
-        first,last = wordList[0],wordList[-1]
-
-        print(f'Dictionary length: {len(wordList)}')
-        print(f'First: {first}\nLast: {last}')
-
         return wordList
 
 # Return the number of positions with matching characters between string 1 and string 2
@@ -37,11 +32,11 @@ def charIndexFrequencies(wordList: List[Word]) -> List[Tuple[Tuple[str,int],int]
     freqs = Counter(allCharPositions)
     return freqs.most_common()
 
-# Takes a guess, the correct answer, and a list of remaining words, and returns the list of remaining words after narrowing based on the number of matching chars
-def narrowRemainingWords(guess: str, answer: str, remainingWords: Set[str]) -> Set[str]:
+# Takes a guess, the correct answer, and a list of remaining words
+# Returns a tuple of the number of matching chars and the list of remaining words after narrowing based on the number of matching chars
+def narrowRemainingWords(guess: str, answer: str, remainingWords: Set[str]) -> Tuple[int, Set[str]]:
     matches = countMatchingChars(guess,answer)
-    print(f'{matches} letters correct\n')
     if guess in remainingWords:
         remainingWords.remove(guess)
     remainingWords = {rw for rw in remainingWords if countMatchingChars(guess,rw) == matches}
-    return remainingWords
+    return (matches, remainingWords)

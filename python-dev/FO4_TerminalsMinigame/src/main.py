@@ -47,6 +47,10 @@ def getConfigFromUser() -> List[int]:
 def mainMenu() -> None:
     # # TODO - other word sources
     wordList = words.pullWordListFromURL() 
+    first,last = wordList[0],wordList[-1]
+    print(f'Dictionary length: {len(wordList)}')
+    print(f'First: {first}\nLast: {last}')
+
     button: str = ''
     while button != 'Q':
         button: str = input('\n[N]ew Game\n[S]olve Random\n[Q]uit\n').upper()

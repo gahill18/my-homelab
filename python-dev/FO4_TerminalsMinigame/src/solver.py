@@ -15,6 +15,7 @@ class Result:
 class Solver:
     def __init__(self, game: Game):
         self.currentGameState = game
+        self.answerSpace = [set("abcdefghijklmnopqrstuvwxyz") for _ in range(self.currentGameState.remainingGuesses)]
 
     # Attempt to win from the position given in self.currentGameState
     # First item is a list of guesses made
@@ -25,6 +26,7 @@ class Solver:
 
         while not self.currentGameState.isGameOver():
             self.currentGameState.printTerminalScreen()
+            print(f'Answer Space: {self.answerSpace}')
             guess: Word = self.bestSingleTurn()
             guesses.append(guess)
             self.currentGameState.submitGuess(guess)
@@ -44,9 +46,9 @@ class Solver:
         numRemaining = len(self.currentGameState.remainingWords)
         halved = numRemaining // 2
         # Find the character and index that comes closest to cuting the list in half
-        bisect = min([(abs(freq-halved), char, ind) for ((char,ind),freq) in cif])
-        freq,char,ind = bisect
-        print(f'bisect: {bisect}')
+        bisectDiff, freq, char, ind = min([(abs(freq-halved), freq, char, ind) for ((char,ind),freq) in cif])
+        
+        print(f'bisect char {char} at index {ind}')
         matchingWords = [w for w in self.currentGameState.remainingWords if w[ind] == char]
         print(f'Matching words: {matchingWords}')
         
