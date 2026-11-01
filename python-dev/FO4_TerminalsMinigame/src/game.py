@@ -34,11 +34,13 @@ class Game:
         return gameState
 
     # Activities to run based on what the player guesses
-    def submitGuess(self, guess: Word) -> None:
+    # Returns True if the guess was correct
+    def submitGuess(self, guess: Word) -> bool:
         print(f'You guessed \'{guess}\'')
         # Filter list of remaining possible answers
         self.remainingWords = words.narrowRemainingWords(guess,self.answer,self.remainingWords)
         self.remainingGuesses -= 1
+        return guess == self.answer
 
     # Has the player loss
     def hasPlayerLost(self) -> bool:

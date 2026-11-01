@@ -49,7 +49,7 @@ def mainMenu() -> None:
     wordList = words.pullWordListFromURL() 
     button: str = ''
     while button != 'Q':
-        button: str = input('\n[N]ew Game\n[S]olve Random\n[Q]uit\n')
+        button: str = input('\n[N]ew Game\n[S]olve Random\n[Q]uit\n').upper()
         if button == 'N':
             # remainingGuesses, wordLength, wordPoolSize = getConfigFromUser()
             gameState = Game.randomGameFromWordList(wordList)
@@ -59,6 +59,8 @@ def mainMenu() -> None:
             solver: Solver = Solver(gameState)
             attemptResult: Result = solver.solve()
             print(attemptResult)
+        else:
+            print(f'Did not recognize option {button}')
 
     print('Thanks for playing!')
     exit(1)
